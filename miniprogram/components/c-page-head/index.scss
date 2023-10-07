@@ -1,0 +1,49 @@
+.page-head-container {
+    position: relative;
+    box-sizing: border-box;
+    background-color: #2e7bf7;
+    color: #fff;
+
+    .page-head-placeholder {
+        box-sizing: border-box;
+    }
+
+    .page-head-body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .page-head-back {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            flex-shrink: 0;
+            flex-grow: 0;
+
+            .icon {
+                width: 40rpx;
+                height: 40rpx;
+                margin-left: 20rpx;
+            }
+        }
+
+        .page-head-title {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-family: "PingFangSC-Semibold";
+            font-size: 32rpx;
+            color: #FFFFFF;
+        }
+
+        .page-head-right {
+            flex-shrink: 0;
+            flex-grow: 0;
+        }
+    }
+}

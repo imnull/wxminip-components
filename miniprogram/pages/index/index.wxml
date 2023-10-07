@@ -1,0 +1,7 @@
+<page-head title="首页" />
+<page-body>
+    <view class="item" wx:for="{{list}}" wx:key="index">
+        <chkbox checked="{{index % 2 === 1}}" />
+        <view>{{index + 1}}. {{item}}</view>
+    </view>
+</page-body>

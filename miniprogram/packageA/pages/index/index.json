@@ -1,0 +1,8 @@
+{
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "c-checkbox": "/packageA/wxmc-components/c-checkbox/index",
+        "c-chkbox": "/wxmc-components/c-checkbox/index",
+        "c-page-head": "/packageA/wxmc-components/c-page-head/index"
+    }
+}

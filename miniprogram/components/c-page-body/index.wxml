@@ -1,0 +1,22 @@
+<scroll-view
+    enable-flex class="page-body-scroll"
+    scroll-y
+    enhanced
+    bounces="{{false}}"
+    refresher-enabled="{{false}}"
+    refresher-triggered="{{refresherTriggered}}"
+    show-scrollbar="{{false}}"
+    style="height:{{H}}px;"
+    bindrefresherrefresh="handleRefresh"
+    bindscrolltolower="handleReachBottom"
+    lower-threshold="{{50}}"
+>
+    <slot name="empty" />
+    <slot />
+    <view wx:if="{{showNomore}}" class="flex-row no-more">
+        <view class="line"></view>
+        <text>没有更多了</text>
+        <view class="line"></view>
+    </view>
+    <view class="bottom-step"></view>
+</scroll-view>

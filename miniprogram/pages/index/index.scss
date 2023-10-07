@@ -1,0 +1,9 @@
+.item {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20rpx 40rpx;
+    border-bottom: 1px dashed #ccc;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

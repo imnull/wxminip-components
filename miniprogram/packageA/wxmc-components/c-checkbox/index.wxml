@@ -1,0 +1,4 @@
+<view class="flex-row checkbox-container" bindtap="handleCheckTap">
+    <image class="checkbox-img {{checked?'':'checked'}}" src="./check-circle.svg" />
+    <image class="checkbox-img {{checked?'checked':''}}" src="./check-on.svg" />
+</view>

@@ -1,0 +1,21 @@
+{
+  "name": "@imnull/wxmc",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc src/cli.ts --outDir libs -d --esModuleInterop -t es5 -m commonjs"
+  },
+  "bin": {
+    "wxmc": "./libs/cli.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "@types/node": "^20.8.3",
+    "chalk": "^4.1.2",
+    "commander": "^11.0.0",
+    "miniprogram-api-typings": "^2.8.3-1",
+    "typescript": "^5.2.2"
+  }
+}

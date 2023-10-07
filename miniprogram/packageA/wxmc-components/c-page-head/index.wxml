@@ -1,0 +1,17 @@
+<view class="page-head-container">
+    <view class="page-head-placeholder" style="height:{{top}}px;"></view>
+    <view class="page-head-body" style="height:{{height}}px;">
+        <view class="page-head-back" style="width:{{width}}px;margin-left:{{screenWidth - right}}px;">
+            <view class="back-btn" wx:if="{{!hideIcon && backStatus>0}}" bindtap="handleBack">
+                <image wx:if="{{backStatus==2}}" class="icon" src="./back.svg" mode="aspectFill" />
+                <image wx:elif="{{backStatus==1}}" class="icon" src="./back-home.svg" mode="aspectFill" />
+            </view>
+        </view>
+        <view class="page-head-title">
+            <text>{{title}}</text>
+        </view>
+        <view class="page-head-right" style="width:{{width}}px;margin-right:{{screenWidth - right}}px;"></view>
+    </view>
+    <view class="page-head-gap" style="height:{{gap}}rpx;"></view>
+    <slot />
+</view>
