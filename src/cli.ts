@@ -18,7 +18,7 @@ program.command('install').description('安装组件到本地小程序项目')
 .action((componentName, subPackage: string) => {
     try {
         if(componentNeedInstall(componentName, subPackage || '')) {
-            const ps = installComponent(componentName, subPackage)
+            const ps = installComponent(componentName, subPackage || '')
             console.log('')
             console.log(chalk.greenBright(`组件'${componentName}'安装成功！`))
             ps.forEach(p => {

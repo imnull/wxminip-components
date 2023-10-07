@@ -32,8 +32,8 @@ const getProjectConfig = (filePath: string = '../project.config.json') => {
 }
 
 const getMiniprogramRoot = () => {
-    const { miniprogramRoot } = getProjectConfig()
-    const p = path.resolve(__dirname, '..', miniprogramRoot)
+    const { miniprogramRoot = '' } = getProjectConfig()
+    const p = path.resolve(__dirname, '..', miniprogramRoot || '')
     return p
 }
 
@@ -73,8 +73,8 @@ const getCurrentProjectConfig = () => {
 }
 
 const getCurrentMiniprogramRoot = () => {
-    const { miniprogramRoot } = getCurrentProjectConfig()
-    const p = path.resolve(process.cwd(), miniprogramRoot)
+    const { miniprogramRoot = '' } = getCurrentProjectConfig()
+    const p = path.resolve(process.cwd(), miniprogramRoot || '')
     return p
 }
 
@@ -111,7 +111,7 @@ export const componentNeedInstall = (name: string, subPackage: string) => {
     if (!comps.includes(name)) {
         throw `组件'${name}'不存在`
     }
-    const targetPath = path.resolve(getCurrentComponentsRoot(subPackage), name)
+    const targetPath = path.resolve(getCurrentComponentsRoot(subPackage), name, 'index.wxml')
     return !fs.existsSync(targetPath)
 }
 
@@ -195,8 +195,7 @@ export const getRouteSubPackage = (route: string) => {
 export const scanUsing = () => {
     const viewers = getProjectView()
     const components = getComponentList().map(name => ({ name, path: `/${COMPONENTS_TARGET_PATH}/${name}/index` }))
-    console.log(components)
-    const baseDir = getMiniprogramRoot()
+    const baseDir = getCurrentMiniprogramRoot()
     const map: { route: string, component: string; tag: string; path: string }[] = []
     viewers.forEach(view => {
         const dir = path.dirname(view.wxml)
@@ -230,14 +229,14 @@ export const scanUsing = () => {
 
 export const getUsingCount = (tag: string, route: string) => {
     const reg = new RegExp('<' + tag + '[\\s\\/>]?', 'g')
-    const wxml = path.join(getMiniprogramRoot(), route + '.wxml')
+    const wxml = path.join(getCurrentMiniprogramRoot(), route + '.wxml')
     const content = fs.readFileSync(wxml, 'utf-8')
     const m = content.match(reg)
     return m ? m.length : 0
 }
 
 export const getProjectView = () => {
-    const baseDir = getMiniprogramRoot()
+    const baseDir = getCurrentMiniprogramRoot()
     const files = getFiles(baseDir).filter(f => !f.includes(COMPONENTS_TARGET_PATH) && f.endsWith('.json')).filter(f => {
         const wxml = f.replace(/\.json$/, '.wxml')
         return fs.existsSync(wxml)
@@ -263,7 +262,7 @@ export const scanReffer = () => {
     const viewers = getProjectView()
     const tmp = getComponentList().map(name => ({ name, path: `${COMPONENTS_TARGET_PATH}/${name}/index` }))
     const { subPackages = [] } = getAppConfig()
-    const baseDir = getMiniprogramRoot()
+    const baseDir = getCurrentMiniprogramRoot()
     const items: { name: string; path: string; subPackage: string; pages: { route: string; tag: string; count: number; component: boolean; }[]; }[] = []
 
     tmp.forEach(t => {
